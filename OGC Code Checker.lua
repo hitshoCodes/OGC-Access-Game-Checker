@@ -1,1 +1,42 @@
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v12,v13)local v14={};for v18=1, #v12 do v6(v14,v0(v4(v1(v2(v12,v18,v18 + 1 )),v1(v2(v13,1 + (v18% #v13) ,1 + (v18% #v13) + 1 )))%256 ));end return v5(v14);end _G.Snipe=true;local v8={};local v9=1813 -(979 + 834) ;local v10=0 + 0 ;local v11=false;while _G.Snipe==true  do task.wait();local v15={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};local v16="";repeat for v19=767 -(745 + 21) ,842 -(660 + 176)  do local v20=0 + 0 ;local v21;while true do if (v20==(0 + 0)) then v21=math.random(2 -1 , #v15);v16=v16   .. v15[v21] ;break;end end end until  not v8[v16] if v8[v16] then local v22=202 -(14 + 188) ;while true do if (v22==(0 -0)) then print(v7("\234\237\222\39\243\183\210\13\145\240\213\44\246\190\213\35\139\131\248\45\227\184\204\27\213\131","\126\177\163\187\69\134\219\167")   .. v16   .. v7("\111\141\40\208\232\99\196\62\133\235\34\222\106\196\240\49\200\43\193\229\99\216\57\192\248\98","\156\67\173\74\165") );v10=v10 + 1 + 0 ;break;end end else local v23=0 + 0 ;while true do if (v23==1) then v9=v9 + 1 + 0 ;break;end if (v23==(0 + 0)) then v8[v16]=true;print(v7("\15\153\76\20\169\42\83\39\247\122\24\181\54\67\38\138\19\86\159\46\67\55\188\76\18\252","\38\84\215\41\118\220\70")   .. v16   .. "!" );v23=1056 -(87 + 968) ;end end end local v17={[1]=v16};game:GetService(v7("\98\19\50\30\247\83\23\54\23\250\99\2\45\0\255\87\19","\158\48\118\66\114")):WaitForChild(v7("\153\49\30","\155\203\68\112\86\19\197")):FireServer(unpack(v17));if (_G.ShowStats==true) then if  not v11 then local v24=0 -0 ;while true do if (v24==(0 + 0)) then print(v7("\125\243\51\254\85\116\240\235\6\238\56\245\80\125\247\197\28\157\21\244\69\123\238\253\66\157","\152\38\189\86\156\32\24\133")   .. v9   .. v7("\188\84\168\66\249\68\233","\38\156\55\199") );print(v7("\147\83\121\42\6\120\239\80\232\78\114\33\3\113\232\126\242\61","\35\200\29\28\72\115\20\154")   .. v10   .. v7("\89\176\215\159\153\36\49\20\255\198\218\159\41\116\24\179\195\218\140\40\45\89\170\194\218\137\98","\84\121\223\177\191\237\76") );v24=2 -1 ;end if (v24==(1414 -(447 + 966))) then v11=true;break;end end end wait(273762 -173763 );end end
+-- Settings:
+
+getgenv().Snipe = true
+
+-- Main Code:
+
+local usedStrings = {}
+local checkedCount = 0
+local usedCount = 0
+
+while Snipe == true do
+    task.wait()
+    local alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                     "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"} -- Include lowercase letters
+
+    local randString = ""
+
+    repeat
+        for i=1, 6 do
+            local rand = math.random(1, #alphabet)
+            randString = randString .. alphabet[rand]
+        end
+    until not usedStrings[randString] -- Keep generating until it's unique
+
+    if usedStrings[randString] then
+        print("[OGC Sniper]: Checked " .. randString .. ", but it was already used!")
+        usedCount = usedCount + 1
+    else
+        usedStrings[randString] = true -- Mark this randString as used
+        print("[OGC Sniper]: Checked " .. randString .. "!")
+        checkedCount = checkedCount + 1
+    end
+
+    local args = {
+        [1] = randString
+    }
+
+    game:GetService("ReplicatedStorage"):WaitForChild("Run"):FireServer(unpack(args))
+        
+        wait(99999)
+    end
+end
